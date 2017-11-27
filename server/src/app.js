@@ -9,15 +9,10 @@ app.use(morgan('combine'))
 app.use(bodyParser.json())
 app.use(cors())
 
-var corsOptions = {
-  origin: "127.0.0.1",
-  optionsSuccessStatus: 200
-};
-
-app.get("/status", cors(corsOptions), function(req, res, next) {
+app.post("/register", function(req, res) {
   res.send({
-        message: "hooray! welcome to our api!" 
-    });
+    message: `Hello! ${req.body.email} welcome to our api!` 
+  });
 });
 
 var port = process.env.PORT || 8081;
